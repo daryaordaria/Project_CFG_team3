@@ -1,0 +1,158 @@
+@use 'base';
+@use 'menu';
+
+.header-wrap {
+    padding: 6% 0 6% 0;
+    background-color: base.$logo-green;
+    @include base.flexbox-parent(column);
+    flex-grow: 2;
+}
+.values-wrap {
+    padding: 6% 0 6% 0;
+    @include base.flexbox-parent(column);
+    flex-grow: 2;
+}
+
+.food-img-wrap {
+    padding: 3% 0 3% 0;
+    @include base.flexbox-parent(column);
+    justify-content: center;
+    align-items: center;
+}
+
+.instruction-wrap {
+    padding: 6% 0 10% 0;
+    @include base.flexbox-parent(column);
+    flex-grow: 3;
+}
+
+.register-wrap {
+    padding: 6% 0 6% 0;
+    @include base.flexbox-parent(column);
+    flex-grow: 1;
+    background-color: base.$logo-green;
+}
+
+.logo-wrap {
+    flex-shrink: 0;
+    flex-grow: 3
+}
+
+.search {
+    @include base.flexbox-parent(row);
+    justify-content: center;
+    align-self: center;
+    padding: 2% 0 2% 0;
+    width: 350px;
+}
+ 
+.searchTerm {
+    height: 35px;
+    border: 1px solid base.$txt-grey;
+    border-right: none;
+    padding: 5px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9DBFAF;
+    flex-grow: 7;
+    &:focus {
+        color: base.$txt-grey;
+    }
+}
+
+.searchButton {
+    height: 35px;
+    border: 1px solid base.$txt-grey;
+    background: base.$txt-grey;
+    text-align: center;
+    color: base.$logo-green;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+    flex-grow: 2;
+}
+
+.motto {
+    align-self: center;
+    text-align: center;
+    padding: 1% 0 1% 0;
+    color: #fff;
+    line-height: 1.8;
+}
+
+.values-details {
+    @include base.flexbox-parent(row);
+    align-items: center;
+    margin-left: -10%;
+    margin-right: -10%; 
+}
+
+.value {
+    @include base.flexbox-parent(column);
+    align-self: center;
+}
+
+.value-description {
+    @include base.flexbox-parent(column);
+    align-content: space-between;
+    max-width: 400px;
+    padding: 0 10% 0 10%;
+}
+
+.photo {
+    max-width: 85%;
+    height: auto;
+    align-self: center;
+}
+
+p1 .instruction-description {
+    text-align: center;
+}
+
+.register-title {
+    align-self: center;
+}
+
+.register-txt {
+    padding-top: 2%;
+}
+
+.phone-instruction {
+    @include base.flexbox-parent(row);
+    background-image: url(/static/images/phone.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    padding: 3% 0 3% 0;
+}
+
+.phone-instruction-left {
+    @include base.flexbox-parent(column);
+}
+
+.phone-instruction-right {
+    @include base.flexbox-parent(column);
+}
+
+#instruction-img {
+    width: 100%;
+    height: auto;
+}
+
+#title {
+    padding-bottom: 6%;
+}
+
+p1 .instruction-description {
+    text-align: center;
+}
+
+.food-img {
+    max-width: 100%;
+    height: auto;
+    align-self: center;
+}
+
+.value-h2 {
+    padding: 3% 0 3% 0;
+}

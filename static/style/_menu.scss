@@ -1,0 +1,83 @@
+@use 'base';
+
+.r-link[href]{
+    color: var(--rLinkColor) !important;
+    text-decoration: var(--rLinkTextDecoration, none) !important;
+}
+
+.r-list{
+    padding-left: var(--rListPaddingLeft, 0) !important;
+    margin-top: var(--rListMarginTop, 0) !important;
+    margin-bottom: var(--rListMarginBottom, 0) !important;
+    list-style: var(--rListListStyle, none) !important;
+}
+
+.menu {
+    --rLinkColor: var(--menuLinkColor, currentColor);
+    background-color: #fff;
+}
+
+.menu-link{
+    display: var(--menuLinkDisplay, block);
+    padding: var(--menuLinkPadding, 1.5rem 2.5rem);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.menu:hover .menu-link:not(:hover){
+    --rLinkColor: var(--menuLinkColorUnactive, rgba(22, 22, 22, .35));
+}
+
+.menu-list{
+    display: flex;  
+}
+
+/* TEXT UNDERLINED */
+
+.text-underlined{
+    position: relative;
+    overflow: hidden;
+    will-change: color;
+    transition: color .25s ease-out;  
+}
+
+.text-underlined::before, 
+.text-underlined::after {
+    content: "";
+    width: 0;
+    height: 3px;
+    background-color: var(--textUnderlinedLineColor, currentColor);
+    will-change: width;
+    transition: width .1s ease-out;
+    position: absolute;
+    bottom: 0;
+}
+
+.text-underlined::before{
+    left: 50%;
+    transform: translateX(-50%); 
+}
+
+.text-underlined::after{
+    right: 50%;
+    transform: translateX(50%); 
+}
+
+.text-underlined:hover::before, 
+.text-underlined:hover::after{
+    width: 100%;
+    transition-duration: .2s;
+}
+
+.menu-wrap {
+    @include base.flexbox-parent(row);
+}
+
+.menu-wrap {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+    width: 100%;
+    background-color: #fff;
+    opacity: 1.0;
+}
