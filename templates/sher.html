@@ -4,11 +4,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Sherfood</title>
-        <link rel="stylesheet" href="/static/style/css/login.css"/>
+        <link rel="stylesheet" href="/static/style/css/sher.css"/>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-        <script type="text/javascript" src="/static/script/login.js"></script>
+        <script type="text/javascript" src="/static/script/sher.js"></script>
     </head>
     <body>
         <div class="site-container">
@@ -23,7 +23,60 @@
                     </ul>
                 </nav>
             </div>
-
+            <form class="form">
+                <div class="form-wrap">
+                    <ul class="flex-outer">
+                        <li>
+                            <label for="product-name">Product name</label>
+                            <input type="text" id="product-name" placeholder="Enter the product name here">
+                        </li>
+                        <li>
+                            <label for="exp-date">Expiration date</label>
+                            <input id="datefield" type='date' min='1899-01-01' max='2000-13-13'>
+                        </li>
+                        <li>
+                            <label for="address">Address</label>
+                            <input type="text" id="address" placeholder="Enter pick up address (more or less exact)">
+                        </li>
+                        <li>
+                            <label for="pick-up">Pick up details</label>
+                            <textarea rows="2" id="pick-up" placeholder="Enter some pick up details"></textarea>
+                        </li>
+                        <li>
+                            <label for="message">Description</label>
+                            <textarea rows="4" id="description" placeholder="Enter product description"></textarea>
+                        </li>
+                        <li>
+                            <p>Tags</p>
+                            <ul class="flex-inner">
+                                <li>
+                                    <input type="checkbox" id="kosher">
+                                    <label for="kosher">kosher</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="lactose-free">
+                                    <label for="lactose-free">lactose-free</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="gluten-free">
+                                    <label for="gluten-free">glute-free</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="wegetarian">
+                                    <label for="wegetarian">wegetarian</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="wegan">
+                                    <label for="wegan">wegan</label>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="button">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
             <footer>
                 <img src="../static/images/footer.png" class="footer-logo" alt="Website logo">
                 <p1 class="copyright">Copyright(c) 2022</p1>
