@@ -13,7 +13,7 @@
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" 
             rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <script type="text/javascript" src="../static/script/main.js"></script>
-        <script defer src="../static/script/transition.js"></script>
+        <script src="../static/script/locationapi.js"></script>
     </head>
     <body>
         <div class="site-container">
@@ -32,10 +32,17 @@
                 <div class="logo-wrap">
                 <img src="../static/images/logo.png" class="logo" alt="Website logo">
                 </div>
-                <div class="search">
-                        <input type="text" class="searchTerm" placeholder="Enter your address...">
+                <form class="search">
+                    <div class="search-input">
+                        <input type="text" class="searchTerm" id="address" placeholder="Enter your city name...">
                         <button type="submit" class="searchButton">Search</button>
-                </div>
+                    </div>
+                    <label class = "checkbox-wrap">
+                            <input type="checkbox" name="checkfield" id="checkfield" onchange="xhr.getLocation(this)"/>
+                            <p>&nbsp &nbsp get my location</p>
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    </label>  
+                </form>
                 <p1 class="motto">Veni, vini, dividi<br> I came, I saw, I shared</p1>
             </div>
             <div class="values-wrap">
