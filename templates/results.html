@@ -5,24 +5,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <title>Sherfood</title>
-        <link rel="stylesheet" href="/static/style/css/results.css"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/css/results.css') }}"/>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" 
         rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-        <script type="text/javascript" src="/static/script/results.js"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='script/results.js') }}"></script>
     </head>
     <body>
         <div class="site-container">
             <div class="menu-wrap" id="navbar">
                 <nav class="menu">
                     <ul class="menu-list r-list">
-                        <li class="menu-group"><a href="main.html" class="menu-link r-link text-underlined">Home</a></li>
-                        <li class="menu-group"><a href="search.html" class="menu-link r-link text-underlined">Get some food</a></li>
-                        <li class="menu-group"><a href="sher.html" class="menu-link r-link text-underlined">Sher your food</a></li>
+                        <li class="menu-group"><a href="/" class="menu-link r-link text-underlined">Home</a></li>
+                        <li class="menu-group"><a href="/search" class="menu-link r-link text-underlined">Get some food</a></li>
+                        <li class="menu-group"><a href="/sher" class="menu-link r-link text-underlined">Sher your food</a></li>
                         <!--    Change to 'User account' if user is already logged in    -->
-                        <li class="menu-group"><a href="login.html" class="menu-link r-link text-underlined">Log in</a></li>  
+                        <li class="menu-group"><a href="/login" class="menu-link r-link text-underlined">Log in</a></li>  
                     </ul>
                 </nav>
             </div>
