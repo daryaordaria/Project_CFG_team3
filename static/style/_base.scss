@@ -2,6 +2,7 @@ $logo-green: #51BCA1;
 $txt-grey: #545454;
 $header-colour: #3B3A3A;
 $roboto: "Roboto", sans-serif;
+$form-input: rgb(238, 238, 238);
 
 @mixin flexbox-parent($direction) {
     display: flex;

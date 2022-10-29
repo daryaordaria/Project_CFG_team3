@@ -1,2 +1,6 @@
 # ignore .md files
+__pycache__/
+*.py[cod]
+
 *.md
+*.py

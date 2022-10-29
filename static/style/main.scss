@@ -30,6 +30,7 @@
     padding: 6% 0 6% 0;
     @include base.flexbox-parent(column);
     flex-grow: 1;
+    flex-shrink: 0;
     background-color: base.$logo-green;
 }
 
@@ -43,20 +44,28 @@
     justify-content: center;
     align-self: center;
     padding: 2% 0 2% 0;
-    width: 350px;
+}
+
+.register {
+    @include base.flexbox-parent(row);
+    justify-content: center;
+    align-self: center;
+    padding: 2% 0 2% 0;
 }
 
 .search-input {
     @include base.flexbox-parent(row);
     padding: 12px;
 }
- 
+
 .searchTerm {
-    height: 35px;
-    border: 1px solid base.$txt-grey;
+    height: 45px;
+    width: 300px;
+    border: 1px solid #fff;
     border-right: none;
     padding: 5px;
     border-radius: 5px 0 0 5px;
+    letter-spacing: 1px;
     outline: none;
     color: #9DBFAF;
     flex-grow: 7;
@@ -65,16 +74,31 @@
     }
 }
 
-.searchButton {
-    height: 35px;
-    border: 1px solid base.$txt-grey;
-    background: base.$txt-grey;
-    text-align: center;
-    color: base.$logo-green;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    font-size: 20px;
-    flex-grow: 2;
+button {
+	border-radius: 0 5px 5px 0;
+	border: 1px solid #fff;
+	background-color: base.$logo-green;
+    border-left: none;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+button:active {
+	transform: scale(0.95);
+}
+
+button:focus {
+	outline: none;
+}
+
+button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
 }
 
 .checkbox-wrap {
@@ -122,7 +146,7 @@
     align-self: center;
 }
 
-p1 .instruction-description {
+p .instruction-description {
     text-align: center;
 }
 
