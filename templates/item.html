@@ -34,18 +34,18 @@
                 </form>
             </div>
             <div class="form-container sign-in-container">
-                <form action="#">
-                    <h1>Soy Vanilla Milk</h1>
+                <div action="#">
+                    <h1>{{result.product_name}}</h1>
                     <div class="item-wrap">
-                    <div class="item-address" id="item"><p><b>address: </b>Warsaw</p></div>
+                    <div class="item-address" id="item"><p><b>address: </b>{{result.city}}</p></div>
+                    <div class="pick-up-details" id="item"><p><b>pick-up-details: </b>
+                        {{result.pick_up_details}}</p></div>
                     <div class="item-description" id="item"><p><b>description: </b>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
-                    <div class="item-exp-date" id="item"><p><b>expiration date: </b>01-March-2022</p></div>
-                    <div class="item-tags" id="item"><p><b>tags: </b>wegetarian, vegan, kosher</p></div>
+                        {{result.description}}</p></div>
+                    <div class="item-exp-date" id="item"><p><b>expiration date: </b>{{result.expiration_date}}</p></div>
+                    <div class="item-tags" id="item"><p><b>tags: </b>{{result.tags}}</p></div>
                 </div>
-                </form>
+            </div>
             </div>
             <div class="overlay-container">
                 <div class="overlay">
