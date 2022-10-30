@@ -36,57 +36,19 @@
                 <div class="title-wrap">
                     <h1 class="title">List of products</h1>
                 </div>
+                {% if results %}
                 <div class="all-items">
-                    <a href="item.html" class="item-wrap text-underlined">
-                        <div class="item-title" id="item"><h2>Great Flour</h2></div>
-                        <div class="item-location" id="item"><p><b>address: </b>Gdanska, Warsaw</p></div>
-                        <div class="item-description" id="item"><p><b>description: </b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
-                        <div class="item-exp-date" id="item"><p><b>expiration date: </b>01-March-2022</p></div>
-                        <div class="item-tags" id="item"><p><b>tags: </b>wegetarian, vegan, kosher</p></div>
+                    {% for result in results %}
+                    <a href="/results/item/{{result.annoucmentID}}" class="item-wrap text-underlined">
+                        <div class="item-title" id="item"><h2> {{result.product_name}} </h2></div>
+                        <div class="item-location" id="item"><p><b>address: </b>{{result.city}}</p></div>
+                        <div class="item-description" id="item"><p><b>description: </b>{{result.description}}</p></div>
+                        <div class="item-exp-date" id="item"><p><b>expiration date: </b>{{result.expiration_date}}</p></div>
+                        <div class="item-tags" id="item"><p><b>tags: </b>{{result.annoucmentID}}</p></div>
                     </a>
-                    <a href="item.html" class="item-wrap text-underlined">
-                        <div class="item-title" id="item"><h2>Great Flour</h2></div>
-                        <div class="item-location" id="item"><p><b>address: </b>Gdanska, Warsaw</p></div>
-                        <div class="item-description" id="item"><p><b>description: </b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
-                        <div class="item-exp-date" id="item"><p><b>expiration date: </b>01-March-2022</p></div>
-                        <div class="item-tags" id="item"><p><b>tags: </b>wegetarian, vegan, kosher</p></div>
-                    </a>
-                    <a href="" class="item-wrap text-underlined">
-                        <div class="item-title" id="item"><h2>Great Flour</h2></div>
-                        <div class="item-location" id="item"><p><b>address: </b>Gdanska, Warsaw</p></div>
-                        <div class="item-description" id="item"><p><b>description: </b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
-                        <div class="item-exp-date" id="item"><p><b>expiration date: </b>01-March-2022</p></div>
-                        <div class="item-tags" id="item"><p><b>tags: </b>wegetarian, vegan, kosher</p></div>
-                    </a>
-                    <a href="" class="item-wrap text-underlined">
-                        <div class="item-title" id="item"><h2>Great Flour</h2></div>
-                        <div class="item-location" id="item"><p><b>address: </b>Gdanska, Warsaw</p></div>
-                        <div class="item-description" id="item"><p><b>description: </b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
-                        <div class="item-exp-date" id="item"><p><b>expiration date: </b>01-March-2022</p></div>
-                        <div class="item-tags" id="item"><p><b>tags: </b>wegetarian, vegan, kosher</p></div>
-                    </a>
-                    <a href="" class="item-wrap text-underlined">
-                        <div class="item-title" id="item"><h2>Great Flour</h2></div>
-                        <div class="item-location" id="item"><p><b>address: </b>Gdanska, Warsaw</p></div>
-                        <div class="item-description" id="item"><p><b>description: </b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
-                        <div class="item-exp-date" id="item"><p><b>expiration date: </b>01-March-2022</p></div>
-                        <div class="item-tags" id="item"><p><b>tags: </b>wegetarian, vegan, kosher</p></div>
-                    </a>
-                    <a href="" class="item-wrap text-underlined">
-                        <div class="item-title" id="item"><h2>Great Flour</h2></div>
-                        <div class="item-location" id="item"><p><b>address: </b>Gdanska, Warsaw</p></div>
-                        <div class="item-description" id="item"><p><b>description: </b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
-                        <div class="item-exp-date" id="item"><p><b>expiration date: </b>01-March-2022</p></div>
-                        <div class="item-tags" id="item"><p><b>tags: </b>wegetarian, vegan, kosher</p></div>
-                    </a>
-                    <a href="" class="item-wrap text-underlined">
-                        <div class="item-title" id="item"><h2>Great Flour</h2></div>
-                        <div class="item-location" id="item"><p><b>address: </b>Gdanska, Warsaw</p></div>
-                        <div class="item-description" id="item"><p><b>description: </b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
-                        <div class="item-exp-date" id="item"><p><b>expiration date: </b>01-March-2022</p></div>
-                        <div class="item-tags" id="item"><p><b>tags: </b>wegetarian, vegan, kosher</p></div>
-                    </a>
+                    {% endfor %}
                 </div>
+                {% endif %}
             </div>
             <footer>
                 <img src="../static/images/footer.png" class="footer-logo" alt="Website logo">
