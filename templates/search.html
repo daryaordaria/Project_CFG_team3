@@ -31,15 +31,15 @@
                 <div class="logo-wrap">
                     <img src="../static/images/logo.png" class="logo" alt="Website logo">
                 </div>
-                <div class="search">
-                    <input type="text" class="searchTerm" placeholder="Enter your address...">
-                    <button type="submit" class="searchButton">Search</button>
-                </div>
+                <form action="/results" method="POST" class="search" name="form">
+                    <input type="text" class="searchTerm" name="address" placeholder="Enter your address...">
+                    <button type="submit" class="searchButton" name="search-button">Search</button>
+                </form>
             </div>
             <div class="empty"></div>
             <footer>
                 <img src="../static/images/footer.png" class="footer-logo" alt="Website logo">
-                <p1 class="copyright">Copyright@ 2022</p1>
+                <p1 class="copyright">Copyright(c) 2022</p1>
             </footer>
         </div>
     </body>
