@@ -1,6 +1,6 @@
 from flask import Flask, flash, render_template, request, url_for
-import requests
-import json
+from .connect_database import get_adverts_by_id, get_adverts_by_location
+from .functions import extract_data
 
 app = Flask(__name__, template_folder='templates', static_url_path='/static')
 app.secret_key = 'I#love<3cookies'
@@ -10,11 +10,10 @@ app.config['DEBUG'] = True
 app.config['TESTING'] = True
 
 
-
 @app.route('/', methods=['GET', 'POST'])
 def main():
     return render_template(
-            'main.html')
+            'main.html',)
 
 
 @app.route('/search', methods=['GET','POST'])
@@ -23,17 +22,24 @@ def search():
         'search.html')
 
 
-
-@app.route('/search', methods=['GET','POST'])
+@app.route('/results', methods=['GET','POST'])
 def results():
+    address = request.form.get('address').strip()
+    city, country = extract_data(address)
+    results = get_adverts_by_location(city, country)
+    
     return render_template(
-        'results.html')
+        'results.html',
+        results
+        )
 
 
-@app.route('/results/item', methods=['GET','POST'])
-def item_details():
+@app.route('/results/item/<id>', methods=['GET','POST'])
+def item_details(id):
+    result = get_adverts_by_id(id)
     return render_template(
-        'item.html')
+        'item.html',
+        result)
 
 
 @app.route('/login', methods=['GET','POST'])
