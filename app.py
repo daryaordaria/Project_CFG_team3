@@ -78,7 +78,7 @@ def login():
 #     if request.method == 'POST' and 'username' in request.login and 'user_password' in request.login and 'phone_number' in request.login:
 #         username = request.login['username']
 #         user_password = request.login['user_password']
-#         email = request.login['phone_number']
+#         email = request.login['email']
 #         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 #         cursor.execute('SELECT * FROM login WHERE username = %s AND user_password = %s', (username, user_password,))
 #         login = cursor.fetchone()
