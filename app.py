@@ -1,6 +1,7 @@
 from flask import Flask, flash, render_template, request, url_for
 from .connect_database import get_adverts_by_id, get_adverts_by_location
-from .functions import extract_data
+from .lat_long import extract_lat_long_via_address, calculate_distance
+# from .functions import extract_data
 
 app = Flask(__name__, template_folder='templates', static_url_path='/static')
 app.secret_key = 'I#love<3cookies'
@@ -25,12 +26,13 @@ def search():
 @app.route('/results', methods=['GET','POST'])
 def results():
     address = request.form.get('address').strip()
-    city, country = extract_data(address)
-    results = get_adverts_by_location(city, country)
+    coords = extract_lat_long_via_address(address)
+    area = calculate_distance(coords)
+    results = get_adverts_by_location(coords)
     
     return render_template(
         'results.html',
-        results
+        results=results
         )
 
 
@@ -39,7 +41,7 @@ def item_details(id):
     result = get_adverts_by_id(id)
     return render_template(
         'item.html',
-        result)
+        result=result)
 
 
 @app.route('/login', methods=['GET','POST'])
