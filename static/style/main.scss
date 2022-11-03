@@ -1,0 +1,199 @@
+@use 'base';
+@use 'menu';
+
+.header-wrap {
+    padding: 6% 0 6% 0;
+    background-color: base.$logo-green;
+    @include base.flexbox-parent(column);
+    flex-grow: 2;
+}
+.values-wrap {
+    padding: 6% 0 6% 0;
+    @include base.flexbox-parent(column);
+    flex-grow: 2;
+}
+
+.food-img-wrap {
+    padding: 3% 0 3% 0;
+    @include base.flexbox-parent(column);
+    justify-content: center;
+    align-items: center;
+}
+
+.instruction-wrap {
+    padding: 6% 0 10% 0;
+    @include base.flexbox-parent(column);
+    flex-grow: 3;
+}
+
+.register-wrap {
+    padding: 6% 0 6% 0;
+    @include base.flexbox-parent(column);
+    flex-grow: 1;
+    flex-shrink: 0;
+    background-color: base.$logo-green;
+}
+
+.logo-wrap {
+    flex-shrink: 0;
+    flex-grow: 3
+}
+
+.search {
+    @include base.flexbox-parent(column);
+    justify-content: center;
+    align-self: center;
+    padding: 2% 0 2% 0;
+}
+
+.register {
+    @include base.flexbox-parent(row);
+    justify-content: center;
+    align-self: center;
+    padding: 2% 0 2% 0;
+}
+
+.search-input {
+    @include base.flexbox-parent(row);
+    padding: 12px;
+}
+
+.searchTerm {
+    height: 45px;
+    width: 300px;
+    border: 1px solid #fff;
+    border-right: none;
+    padding: 5px;
+    border-radius: 5px 0 0 5px;
+    letter-spacing: 1px;
+    outline: none;
+    color: #9DBFAF;
+    flex-grow: 7;
+    &:focus {
+        color: base.$txt-grey;
+    }
+}
+
+button {
+	border-radius: 0 5px 5px 0;
+	border: 1px solid #fff;
+	background-color: base.$logo-green;
+    border-left: none;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+button:active {
+	transform: scale(0.95);
+}
+
+button:focus {
+	outline: none;
+}
+
+button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+
+.checkbox-wrap {
+    @include base.flexbox-parent(row);
+    color: #fff;
+    padding-top: 1%;
+}
+
+.fa-map-marker {
+    color: #fff;
+    margin-left: 2%;
+    padding-top: 1%;
+}
+
+.motto {
+    align-self: center;
+    text-align: center;
+    padding: 1% 0 1% 0;
+    color: #fff;
+    line-height: 1.8;
+}
+
+.values-details {
+    @include base.flexbox-parent(row);
+    align-items: center;
+    margin-left: -10%;
+    margin-right: -10%; 
+}
+
+.value {
+    @include base.flexbox-parent(column);
+    align-self: center;
+}
+
+.value-description {
+    @include base.flexbox-parent(column);
+    align-content: space-between;
+    max-width: 400px;
+    padding: 0 10% 0 10%;
+}
+
+.photo {
+    max-width: 85%;
+    height: auto;
+    align-self: center;
+}
+
+p .instruction-description {
+    text-align: center;
+}
+
+.register-title {
+    align-self: center;
+}
+
+.register-txt {
+    padding-top: 2%;
+}
+
+.phone-instruction {
+    @include base.flexbox-parent(row);
+    background-image: url(/static/images/phone.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    padding: 3% 0 3% 0;
+}
+
+.phone-instruction-left {
+    @include base.flexbox-parent(column);
+}
+
+.phone-instruction-right {
+    @include base.flexbox-parent(column);
+}
+
+#instruction-img {
+    width: 100%;
+    height: auto;
+}
+
+#title {
+    padding-bottom: 6%;
+}
+
+p1 .instruction-description {
+    text-align: center;
+}
+
+.food-img {
+    max-width: 100%;
+    height: auto;
+    align-self: center;
+}
+
+.value-h2 {
+    padding: 3% 0 3% 0;
+}
