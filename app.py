@@ -22,7 +22,6 @@ app.config['MYSQL_HOST'] = HOST
 app.config['MYSQL_USER'] = USER
 app.config['MYSQL_PASSWORD'] = PASSWORD
 app.config['MYSQL_DB'] = DB_NAME
-# app.config['SECRET_KEY'] = 'the random string'    
 mysql = MySQL()
 mysql.init_app(app)
 
