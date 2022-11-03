@@ -333,25 +333,45 @@ input {
   justify-content: center;
   align-content: center;
   flex-direction: column;
-  justify-content: flex-start;
-  align-content: stretch;
-  align-items: stretch;
-  line-height: 1.6;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
   text-decoration: none;
+  align-self: center;
   color: #545454;
+  height:100%;
 }
 
-.item-description {
+#item {
+  line-height: 2.3;
+  align-self: center
+}
+
+footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
   flex-direction: column;
-  flex-wrap: wrap;
+  padding: 2% 0 2% 0;
 }
 
-#item {
-  padding: 1% 0 2% 0;
+textarea {
+  width: 100%;
+  background-color: rgb(238, 238, 238);
+  border: none;
+  margin-bottom: 15px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 8px;
+  padding-bottom: 12px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 12px;
+  text-align: star;
+  font-family: "Roboto", sans-serif;
+  font-size: smaller;
+  letter-spacing: 0.7;
+  line-height: 1.6;
 }
-
 /*# sourceMappingURL=item.css.map */
