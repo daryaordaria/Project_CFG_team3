@@ -220,20 +220,11 @@ footer {
   cursor: pointer;
 }
 
-.item-description {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
-.item-description:hover {
-  color: rgb(19, 19, 19);
-}
+
 
 #item {
   padding: 1% 0 2% 0;
+  text-decoration: none;
 }
 #item p {
   font-size: smaller;
