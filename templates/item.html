@@ -49,6 +49,7 @@
             <div class="form-container sign-in-container">
                 <div action="#">
                     {% for result in result %}
+                {% for result in result %}
                     <div class="item-wrap">
                     <h1>{{result.product_name}}</h1>
                     <div class="item-address" id="item"><p><b>address: </b>{{result.address}}</p></div>
@@ -61,6 +62,16 @@
                     {% endfor %}
                 </div>
             </div>
+                        <h1>{{result.product_name}}</h1>
+                        <div class="item-address" id="item"><b>address: </b>{{result.address}}</div>
+                        <div class="pick-up-details" id="item"><b>pick-up-details: </b>
+                            {{result.pick_up_details}}</div>
+                        <div class="item-description" id="item"><b>description: </b>
+                            {{result.description}}</div>
+                        <div class="item-exp-date" id="item"><b>expiration date: </b>{{result.expiration_date}}</div>
+                        <div class="item-tags" id="item"><b>tags: </b>{{result.tags}}</div>
+                    </div>
+                {% endfor %}
             </div>
             <div class="overlay-container">
                 <div class="overlay">
