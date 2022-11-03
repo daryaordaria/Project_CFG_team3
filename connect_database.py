@@ -1,5 +1,7 @@
 import mysql.connector
 from datetime import date
+from collections import defaultdict, namedtuple
+from functools import wraps
 from config import USER, PASSWORD, HOST, DB_NAME
 
 def _connect_to_db(db_name):
@@ -26,11 +28,18 @@ def _get_adverts(query):
             'lactosefree', 'product_name', 'description']
     tags = ['vegan', 'vegetarian', 'kosher', 'halal', 'glutenfree', 'lactosefree']
     
+    Args = namedtuple('Args',('query', 'db_cursor'))
+    arg = Args(*args)
+    arg.db_cursor.execute(arg.query)
+    results = arg.db_cursor.fetchall()
+    adverts = []
     for result in results:
         result_dict = dict(zip(keys, result))
         
         tags = [key for key, val in result_dict.items() if key in tags and val == 1]
         result_dict["tags"] = ", ".join(tags)
+        present_tags = [key for key, val in result_dict.items() if key in tags and val == 1]
+        result_dict["tags"] = ", ".join(present_tags)
         
         if result_dict["expiration_date"] >= date.today():
             adverts.append(result_dict) 
@@ -56,6 +65,7 @@ def get_adverts_by_location(coords):
             annoucementID, userID, address, latitude, longitude, pick_up_details, 
             expiration_date, vegan, vegetarian, kosher, halal, glutenfree, 
             lactosefree, product_name, description
+            {", ".join(keys)}
         FROM 
             annoucements 
         WHERE 
@@ -74,6 +84,7 @@ def get_adverts_by_id(id):
                 annoucementID, userId, address, latitude, longitude, pick_up_details, 
                 expiration_date, vegan, vegetarian, kosher, halal, glutenfree, 
                 lactosefree, product_name, description
+                {", ".join(keys)}
             FROM 
                 annoucements 
             WHERE 
@@ -91,20 +102,26 @@ def add_advertisment(data, coords, user_id):
         db_name = 'Sherfood'
         db_connection = _connect_to_db(db_name)
         cur = db_connection.cursor()
+        data = defaultdict(int, arg.data)
         query = f"""
             INSERT INTO annoucements 
                 (
                 userID, address, latitude, longitude, pick_up_details, 
                 expiration_date, vegan, vegetarian, kosher, halal, glutenfree, 
                 lactosefree, product_name, description
+                {", ".join(keys[1:])}
                 )
             VALUES 
                 (
                 '{user_id}','{data["address"]}', '{coords[0]}', '{coords[1]}', 
+                '{arg.user_id}','{data["address"]}', '{arg.coords[0]}', '{arg.coords[1]}', 
                 '{data["pick_up_details"]}', '{data["expiration_date"]}', 
                 '{data.get("vegan", 0)}', '{data.get("vegetarian", 0)}',  
                 '{data.get("kosher", 0)}', '{data.get("halal", 0)}',  
                 '{data.get("glutenfree", 0)}', '{data.get("lactosefree", 0)}', 
+                '{data["vegan"]}', '{data["vegetarian"]}',  
+                '{data["kosher"]}', '{data["halal"]}',  
+                '{data["glutenfree"]}', '{data["lactosefree"]}', 
                 '{data["product_name"]}', '{data["description"]}'
                 )
             """
