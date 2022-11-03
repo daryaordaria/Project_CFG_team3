@@ -5,6 +5,10 @@ from functools import wraps
 from config import USER, PASSWORD, HOST, DB_NAME
 
 
+tags = ['vegan', 'vegetarian', 'kosher', 'halal', 'glutenfree', 'lactosefree']
+keys = ['annoucementID','userID', 'address', 'latitude', 'longitude', 'pick_up_details', 
+            'expiration_date', *tags, 'product_name', 'description']
+
 def db_connection(func):
     @wraps(func)
     def inner(*args):
