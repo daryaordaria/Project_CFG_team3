@@ -4,6 +4,23 @@ from collections import defaultdict, namedtuple
 from functools import wraps
 from config import USER, PASSWORD, HOST, DB_NAME
 
+
+def db_connection(func):
+    @wraps(func)
+    def inner(*args):
+        db_connection = _connect_to_db(DB_NAME)
+        cur = db_connection.cursor()
+        
+        adverts = func(*args,cur)
+        
+        db_connection.commit()
+    
+        if db_connection:
+            db_connection.close()
+        return adverts
+    return inner
+
+
 def _connect_to_db(db_name):
     cnx = mysql.connector.connect(
         host=HOST,
@@ -28,10 +45,15 @@ def _get_adverts(query):
             'lactosefree', 'product_name', 'description']
     tags = ['vegan', 'vegetarian', 'kosher', 'halal', 'glutenfree', 'lactosefree']
     
+    
+@db_connection
+def _get_adverts(*args):
     Args = namedtuple('Args',('query', 'db_cursor'))
     arg = Args(*args)
+    
     arg.db_cursor.execute(arg.query)
     results = arg.db_cursor.fetchall()
+    
     adverts = []
     for result in results:
         result_dict = dict(zip(keys, result))
@@ -98,6 +120,11 @@ def get_adverts_by_id(id):
 
 
 def add_advertisment(data, coords, user_id):
+@db_connection
+def add_advertisment(*args):
+    Args = namedtuple('Args',('data','coords','user_id', 'db_cursor'))
+    arg = Args(*args)
+    
     try:
         db_name = 'Sherfood'
         db_connection = _connect_to_db(db_name)
@@ -132,6 +159,10 @@ def add_advertisment(data, coords, user_id):
 
         if db_connection:
             db_connection.close()
+        arg.db_cursor.execute(query)
+        
+        return True
+    
     except:
         is_added = False
 
