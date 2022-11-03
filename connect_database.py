@@ -18,6 +18,7 @@ def db_connection(func):
         adverts = func(*args,cur)
         
         db_connection.commit()
+        cur.close()
     
         if db_connection:
             db_connection.close()
@@ -36,18 +37,12 @@ def _connect_to_db(db_name):
     return cnx
 
 
-def _get_adverts(query):
-    adverts = []
-    db_name = DB_NAME
-    db_connection = _connect_to_db(db_name)
-    cur = db_connection.cursor()
-        
+def _delete_advert(id, cur):
+    query = f"""
+        DELETE FROM annoucements
+        WHERE annoucementID = '{id}'
+        """
     cur.execute(query)
-    results = cur.fetchall()
-    keys = ['annoucementID','userID', 'address', 'latitude', 'longitude', 'pick_up_details', 
-            'expiration_date', 'vegan', 'vegetarian', 'kosher', 'halal', 'glutenfree', 
-            'lactosefree', 'product_name', 'description']
-    tags = ['vegan', 'vegetarian', 'kosher', 'halal', 'glutenfree', 'lactosefree']
     
     
 @db_connection
@@ -62,35 +57,20 @@ def _get_adverts(*args):
     for result in results:
         result_dict = dict(zip(keys, result))
         
-        tags = [key for key, val in result_dict.items() if key in tags and val == 1]
-        result_dict["tags"] = ", ".join(tags)
         present_tags = [key for key, val in result_dict.items() if key in tags and val == 1]
         result_dict["tags"] = ", ".join(present_tags)
         
         if result_dict["expiration_date"] >= date.today():
             adverts.append(result_dict) 
         else:
-            delete_query = f"""
-                DELETE FROM annoucements
-                WHERE annoucementID = '{result_dict["annoucementID"]}'
-                """
-            cur.execute(delete_query)
+            _delete_advert(result_dict["annoucement_id"], arg.db_cursor)
             
-    db_connection.commit()
-    cur.close()
-    
-    if db_connection:
-        db_connection.close()
-
     return adverts
 
 
 def get_adverts_by_location(coords):
     query = f"""
         SELECT 
-            annoucementID, userID, address, latitude, longitude, pick_up_details, 
-            expiration_date, vegan, vegetarian, kosher, halal, glutenfree, 
-            lactosefree, product_name, description
             {", ".join(keys)}
         FROM 
             annoucements 
@@ -107,9 +87,6 @@ def get_adverts_by_id(id):
     try:
         query = f"""
             SELECT 
-                annoucementID, userId, address, latitude, longitude, pick_up_details, 
-                expiration_date, vegan, vegetarian, kosher, halal, glutenfree, 
-                lactosefree, product_name, description
                 {", ".join(keys)}
             FROM 
                 annoucements 
@@ -122,54 +99,31 @@ def get_adverts_by_id(id):
         
     return result
 
-
-def add_advertisment(data, coords, user_id):
 @db_connection
 def add_advertisment(*args):
     Args = namedtuple('Args',('data','coords','user_id', 'db_cursor'))
     arg = Args(*args)
     
     try:
-        db_name = 'Sherfood'
-        db_connection = _connect_to_db(db_name)
-        cur = db_connection.cursor()
         data = defaultdict(int, arg.data)
         query = f"""
             INSERT INTO annoucements 
                 (
-                userID, address, latitude, longitude, pick_up_details, 
-                expiration_date, vegan, vegetarian, kosher, halal, glutenfree, 
-                lactosefree, product_name, description
                 {", ".join(keys[1:])}
                 )
             VALUES 
                 (
-                '{user_id}','{data["address"]}', '{coords[0]}', '{coords[1]}', 
                 '{arg.user_id}','{data["address"]}', '{arg.coords[0]}', '{arg.coords[1]}', 
                 '{data["pick_up_details"]}', '{data["expiration_date"]}', 
-                '{data.get("vegan", 0)}', '{data.get("vegetarian", 0)}',  
-                '{data.get("kosher", 0)}', '{data.get("halal", 0)}',  
-                '{data.get("glutenfree", 0)}', '{data.get("lactosefree", 0)}', 
                 '{data["vegan"]}', '{data["vegetarian"]}',  
                 '{data["kosher"]}', '{data["halal"]}',  
                 '{data["glutenfree"]}', '{data["lactosefree"]}', 
                 '{data["product_name"]}', '{data["description"]}'
                 )
             """
-        cur.execute(query)
-        db_connection.commit()
-        cur.close()
-        is_added = True
-
-        if db_connection:
-            db_connection.close()
         arg.db_cursor.execute(query)
         
         return True
     
     except:
-        is_added = False
-
-    return is_added
-
-# print(get_adverts_by_location({'lat_min': 54.014426863627534, 'lat_max': 54.19429093637245, 'lon_min': 22.764211235446048, 'lon_max': 23.070983364553957}))
+        return False
