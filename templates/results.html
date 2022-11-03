@@ -22,7 +22,11 @@
                         <li class="menu-group"><a href="/search" class="menu-link r-link text-underlined">Get some food</a></li>
                         <li class="menu-group"><a href="/sher" class="menu-link r-link text-underlined">Sher your food</a></li>
                         <!--    Change to 'User account' if user is already logged in    -->
-                        <li class="menu-group"><a href="/login" class="menu-link r-link text-underlined">Log in</a></li>  
+                        {% if login %}
+                        <li class="menu-group"><a href="/logout" class="menu-link r-link text-underlined">Log out</a></li>
+                        {% else %}
+                        <li class="menu-group"><a href="/login" class="menu-link r-link text-underlined">Log in</a></li>
+                        {% endif %}
                     </ul>
                 </nav>
             </div>
