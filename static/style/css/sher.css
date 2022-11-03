@@ -1,0 +1,249 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #fff;
+  font-family: "Roboto", sans-serif;
+  color: #545454;
+}
+
+h1 {
+  text-align: center;
+  color: #3B3A3A;
+  font-weight: bold;
+  margin: 0;
+}
+
+h2 {
+  text-align: center;
+  color: #3B3A3A;
+  padding: 3% 0 3% 0;
+}
+
+p {
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+
+.site-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex;
+  align-content: center;
+  align-self: center;
+}
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  padding: 2% 0 2% 0;
+  bottom: 0;
+}
+
+.r-link[href] {
+  color: var(--rLinkColor) !important;
+  text-decoration: var(--rLinkTextDecoration, none) !important;
+}
+
+.r-list {
+  padding-left: var(--rListPaddingLeft, 0) !important;
+  margin-top: var(--rListMarginTop, 0) !important;
+  margin-bottom: var(--rListMarginBottom, 0) !important;
+  list-style: var(--rListListStyle, none) !important;
+}
+
+.menu {
+  --rLinkColor: var(--menuLinkColor, currentColor);
+  background-color: #fff;
+}
+
+.menu-link {
+  display: var(--menuLinkDisplay, block);
+  padding: var(--menuLinkPadding, 1.5rem 2.5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.menu:hover .menu-link:not(:hover) {
+  --rLinkColor: var(--menuLinkColorUnactive, rgba(22, 22, 22, .35));
+}
+
+.menu-list {
+  display: flex;
+}
+
+/* TEXT UNDERLINED */
+.text-underlined {
+  position: relative;
+  overflow: hidden;
+  will-change: color;
+  transition: color 0.25s ease-out;
+}
+
+.text-underlined::before,
+.text-underlined::after {
+  content: "";
+  width: 0;
+  height: 3px;
+  background-color: var(--textUnderlinedLineColor, currentColor);
+  will-change: width;
+  transition: width 0.1s ease-out;
+  position: absolute;
+  bottom: 0;
+}
+
+.text-underlined::before {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.text-underlined::after {
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.text-underlined:hover::before,
+.text-underlined:hover::after {
+  width: 100%;
+  transition-duration: 0.2s;
+}
+
+.menu-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+}
+
+.menu-wrap {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
+  opacity: 1;
+}
+
+.site-container {
+  min-height: 100vh;
+  min-width: 100%;
+}
+
+.flex-outer,
+.flex-inner {
+  list-style-type: none;
+  padding: 0;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  color: #fff;
+}
+
+.flex-outer {
+  width: 50%;
+  align-self: center;
+}
+
+.flex-outer li,
+.flex-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+}
+
+.form-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  background: #51BCA1;
+  padding: 3% 0 2% 0;
+  width: 100%;
+}
+
+.flex-outer > li:not(:last-child) {
+  margin-bottom: 3%;
+}
+
+.flex-outer li label,
+.flex-outer li p {
+  padding: 3px;
+}
+
+.flex-outer > li > label,
+.flex-outer li p {
+  flex: 1 0 120px;
+  max-width: 220px;
+}
+
+.flex-outer > li > label + *,
+.flex-inner {
+  flex: 1 0 220px;
+}
+
+.flex-outer li input:not([type=checkbox]),
+.flex-outer li textarea {
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+}
+
+.flex-inner li {
+  align-self: center;
+  margin-right: 1%;
+}
+
+.button-wrap {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding-top: 2%;
+}
+
+.submit-button {
+  border-radius: 5px;
+  border: 1px solid #fff;
+  background-color: #51BCA1;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  align-self: center;
+}
+
+.submit-button:active {
+  transform: scale(0.95);
+}
+
+.submit-button:focus {
+  outline: none;
+}
+
+.submit-button.ghost {
+  background-color: transparent;
+  border-color: #FFFFFF;
+}
+
+.flash-msg {
+  color: #545454;
+}
+
+/*# sourceMappingURL=sher.css.map */

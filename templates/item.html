@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sherfood</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/css/item.css') }}"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <script type="text/javascript" src="{{ url_for('static', filename='script/item.js') }}"></script>
+    </head>
+    <body>
+        <div class="site-container">
+        <div class="menu-wrap" id="navbar">
+            <nav class="menu">
+                <ul class="menu-list r-list">
+                    <li class="menu-group"><a href="/" class="menu-link r-link text-underlined">Home</a></li>
+                    <li class="menu-group"><a href="/search" class="menu-link r-link text-underlined">Get some food</a></li>
+                    <li class="menu-group"><a href="/sher" class="menu-link r-link text-underlined">Sher your food</a></li>
+                    <!--    Change to 'User account' if user is already logged in    -->
+                    <li class="menu-group"><a href="/login" class="menu-link r-link text-underlined">Log in</a></li>  
+                </ul>
+            </nav>
+        </div>
+        <div class="container" id="container">
+            <div class="form-container sign-up-container">
+                <form action="#" name="contact-form">
+                    <h1>Contact form</h1>
+                    <input type="text" name="name" maxlength="30" placeholder="Your name or nickname"/>
+                    <input type="email" name="email" maxlength="40" placeholder="Your email or phone number"/>
+                    <input type="phone" name="phone" maxlength="20" placeholder="Your phone number (optional)"/>
+                    <textarea rows=5 name="message" maxlength="200" 
+                        placeholder="Write your message here and wait for the owner of the product to contact you back"></textarea>
+                    <button>Send!</button>
+                </form>
+            </div>
+            <div class="form-container sign-in-container">
+                <div action="#">
+                    {% for result in result %}
+                    <div class="item-wrap">
+                    <h1>{{result.product_name}}</h1>
+                    <div class="item-address" id="item"><p><b>address: </b>{{result.address}}</p></div>
+                    <div class="pick-up-details" id="item"><p><b>pick-up-details: </b>
+                        {{result.pick_up_details}}</p></div>
+                    <div class="item-description" id="item"><p><b>description: </b>
+                        {{result.description}}</p></div>
+                    <div class="item-exp-date" id="item"><p><b>expiration date: </b>{{result.expiration_date}}</p></div>
+                    <div class="item-tags" id="item"><p><b>tags: </b>{{result.tags}}</p></div>
+                    {% endfor %}
+                </div>
+            </div>
+            </div>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1>Product details</h1>
+                        <p>Here are some details about the product</p>
+                        <button class="ghost" id="signIn">Click!</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h1>Contact Form</h1>
+                        <p>Contact with the owner of the product and let them know that you're interested</p>
+                        <button class="ghost" id="signUp">Click!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <footer>
+                <img src="../static/images/footer.png" class="footer-logo" alt="Website logo">
+                <p1 class="copyright">Copyright(c) 2022</p1>
+            </footer>
+        </div>
+    </body>
+</html>
+
