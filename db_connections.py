@@ -19,7 +19,7 @@ def db_connection(func):
         results = func(*args,cur)
         db_connection.commit()
         cur.close()
-    
+
         if db_connection:
             db_connection.close()
         return results
@@ -147,8 +147,8 @@ def get_email_address(*args):
                     
         arg.db_cursor.execute(query)
         email_address = arg.db_cursor.fetchone()
-
+        
     except:
-        msg = ('An error occurred whilst connecting to the DB please try again')
+        return False
 
-    return email_address, msg
+    return email_address[0]
