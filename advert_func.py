@@ -4,16 +4,17 @@ from collections import defaultdict, namedtuple
 from functools import wraps
 from config import USER, PASSWORD, HOST, DB_NAME
 
-
 tags = ['vegan', 'vegetarian', 'kosher', 'halal', 'glutenfree', 'lactosefree']
 keys = ['annoucementID','userID', 'address', 'latitude', 'longitude', 'pick_up_details', 
             'expiration_date', *tags, 'product_name', 'description']
 
+# db_connection decorator:
 def db_connection(func):
     @wraps(func)
     def inner(*args):
-        db_connection = _connect_to_db(DB_NAME)
+        db_connection = _connect_to_db()
         cur = db_connection.cursor()
+        print("db open")
         
         adverts = func(*args,cur)
         
@@ -21,18 +22,18 @@ def db_connection(func):
         cur.close()
     
         if db_connection:
+            print("db closed")
             db_connection.close()
         return adverts
     return inner
 
-
-def _connect_to_db(db_name):
+def _connect_to_db():
     cnx = mysql.connector.connect(
         host=HOST,
         user=USER,
         password=PASSWORD,
         auth_plugin='mysql_native_password',
-        database=db_name
+        database=DB_NAME
     )
     return cnx
 
@@ -78,6 +79,7 @@ def get_adverts_by_location(coords):
             (latitude BETWEEN '{coords["lat_min"]}' AND '{coords["lat_max"]}')
             AND (longitude BETWEEN '{coords["lon_min"]}' AND '{coords["lon_max"]}') 
         """
+    print(query)
     result = _get_adverts(query)
         
     return result

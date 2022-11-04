@@ -9,7 +9,7 @@ def log_out(session):
     except:
         return False
 
-
+# login check decorator:
 def login_check(session):
     def outer(func):
         @wraps(func)
@@ -20,5 +20,3 @@ def login_check(session):
             return render_template(template_name, **result)
         return inner
     return outer
-
-
