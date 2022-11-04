@@ -89,14 +89,12 @@ def item_details(id):
         return 'search.html', {'alert': alert}
     return 'item.html', {'result': result[0]}
 
+
 @app.route('/results/item/send', methods =['GET','POST'])
 @login_check(session)
 def contact():
-    msg = ('omg')
-    print(request.form)
     if request.method == 'POST':
         msg, is_msg_rendered = render_email_msg(request.form)
-        print(type(msg))
         if is_msg_rendered:
             mail.send(msg)
             alert = "alert-info"
@@ -156,7 +154,7 @@ def login():
                 
                 return render_template(
                 'main.html', 
-                alert=alert)
+                alert=alert, login=True)
                 
             else:
                 flash('Sorry, username or/and password are invalid. Try again')
@@ -166,7 +164,8 @@ def login():
             flash("Please enter both username and password to sign in.")
         
     return render_template(
-        'login.html')
+        'login.html', 
+        alert=alert)
 
     
 @app.route('/sher', methods=['GET','POST'])

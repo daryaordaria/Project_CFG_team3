@@ -204,7 +204,6 @@ footer {
 
 .item-wrap {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-content: center;
   flex-direction: column;
@@ -226,8 +225,12 @@ footer {
   padding: 1% 0 2% 0;
   text-decoration: none;
 }
+
 #item p {
   font-size: smaller;
 }
-
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
 /*# sourceMappingURL=results.css.map */

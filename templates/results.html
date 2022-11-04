@@ -41,12 +41,6 @@
                 </button>
             </div>
         {% endfor %}
-            <div class="search-wrap">
-                <div class="search">
-                    <input type="text" class="searchTerm" placeholder="Enter your address...">
-                    <button type="submit" class="searchButton">Search</button>
-                </div>
-            </div>
             <div class="results-wrap">
                 <div class="title-wrap">
                     <h1 class="title">List of products</h1>
@@ -57,7 +51,6 @@
                             <a href="/results/item/{{result.annoucementID}}" class="item-wrap text-underlined">
                                 <div class="item-title" id="item"><h2> {{result.product_name}} </h2></div>
                                 <div class="item-location" id="item"><p><b>address: </b>{{result.address}}</p></div>
-                                <div class="item-description" id="item"><p><b>description: </b>{{result.description}}</p></div>
                                 <div class="item-exp-date" id="item"><p><b>expiration date: </b>{{result.expiration_date}}</p></div>
                                 <div class="item-tags" id="item"><p><b>tags: </b>{{result.tags}}</p></div>
                             </a>
