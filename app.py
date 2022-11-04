@@ -20,7 +20,6 @@ app.secret_key = 'I#love<3cookies'
 
 app.config['ENV'] = 'development'
 app.config['DEBUG'] = True
-app.config['TESTING'] = True
 #  database connection
 app.config['MYSQL_HOST'] = HOST
 app.config['MYSQL_USER'] = USER
@@ -31,6 +30,9 @@ app.config["MAIL_PORT"] = 465
 app.config["MAIL_USE_SSL"] = True
 app.config["MAIL_USERNAME"] = EMAIL_USER
 app.config["MAIL_PASSWORD"] = EMAIL_PASSWORD
+MAIL_SUPPRESS_SEND = False
+MAIL_DEBUG = True
+
 
 mysql = MySQL()
 mail = Mail()
