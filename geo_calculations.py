@@ -1,27 +1,24 @@
 from haversine import inverse_haversine, Direction
-from collections import namedtuple
 import requests
 
 GOOGLE_API_KEY = 'AIzaSyApyx4KbXuO-hBRceBu3LugFm-rYdAlvPQ'
 
 def extract_lat_long_via_address(address):
-    Coords = namedtuple('Coords',('lat', 'lon'))
-    coords = Coords(None, None)
-    
+    lat = lon = None
     api_key = GOOGLE_API_KEY
     base_url = "https://maps.googleapis.com/maps/api/geocode/json"
     endpoint = f"{base_url}?address={address}&key={api_key}"
     r = requests.get(endpoint)
     if r.status_code not in range(200, 299):
-        return coords
+        return lat, lon
     try:
         results = r.json()['results'][0]
-        coords.lat = results['geometry']['location']['lat']
-        coords.lon = results['geometry']['location']['lng']
+        lat = results['geometry']['location']['lat']
+        lon = results['geometry']['location']['lng']
     except:
         pass
     
-    return coords
+    return lat, lon
 
 
 def calculate_distance(coords):

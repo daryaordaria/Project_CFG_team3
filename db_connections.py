@@ -9,20 +9,20 @@ tags = ['vegan', 'vegetarian', 'kosher', 'halal', 'glutenfree', 'lactosefree']
 keys = ['annoucementID','userID', 'address', 'latitude', 'longitude', 'pick_up_details', 
             'expiration_date', *tags, 'product_name', 'description']
 
+
+# decorator:
 def db_connection(func):
     @wraps(func)
     def inner(*args):
         db_connection = _connect_to_db(DB_NAME)
         cur = db_connection.cursor()
-        
-        adverts = func(*args,cur)
-        
+        results = func(*args,cur)
         db_connection.commit()
         cur.close()
     
         if db_connection:
             db_connection.close()
-        return adverts
+        return results
     return inner
 
 
@@ -94,10 +94,12 @@ def get_adverts_by_id(id):
                 annoucementID = '{id}'
             """
         result = _get_adverts(query)
+        
     except:
         result = False
         
     return result
+
 
 @db_connection
 def add_advertisment(*args):
@@ -127,3 +129,26 @@ def add_advertisment(*args):
     
     except:
         return False
+
+@db_connection
+def get_email_address(*args):
+    try:
+        Args = namedtuple('Args',('user_id', 'db_cursor'))
+        arg = Args(*args)
+
+        query = f""" 
+                SELECT 
+                    email
+                FROM 
+                    users 
+                WHERE 
+                    userID = '{arg.user_id}' 
+                """
+                    
+        arg.db_cursor.execute(query)
+        email_address = arg.db_cursor.fetchone()
+
+    except:
+        msg = ('An error occurred whilst connecting to the DB please try again')
+
+    return email_address, msg
