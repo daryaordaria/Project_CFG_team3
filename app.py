@@ -4,11 +4,15 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from flask import Flask, flash, session, redirect, render_template, request, url_for
 from flask_mysqldb import MySQL
+from flask_mail import Mail, Message
 import MySQLdb.cursors
-from connect_database import get_adverts_by_id, get_adverts_by_location, add_advertisment
-from lat_long import extract_lat_long_via_address, calculate_distance
-from login_func import log_out, login_check
-from config import HOST, USER, PASSWORD, DB_NAME
+
+from db_connections import get_adverts_by_id, get_adverts_by_location, add_advertisment
+from geo_calculations import extract_lat_long_via_address, calculate_distance
+from login_logout import log_out, login_check
+from email_sender import render_email_msg
+from config import HOST, USER, PASSWORD, DB_NAME, EMAIL_USER, EMAIL_PASSWORD
+
 
 
 app = Flask(__name__, template_folder='templates', static_url_path='/static')
@@ -22,8 +26,15 @@ app.config['MYSQL_HOST'] = HOST
 app.config['MYSQL_USER'] = USER
 app.config['MYSQL_PASSWORD'] = PASSWORD
 app.config['MYSQL_DB'] = DB_NAME
+app.config["MAIL_SERVER"] = "smtp.gmail.com"
+app.config["MAIL_PORT"] = 465
+app.config["MAIL_USE_SSL"] = True
+app.config["MAIL_USERNAME"] = EMAIL_USER
+app.config["MAIL_PASSWORD"] = EMAIL_PASSWORD
 mysql = MySQL()
 mysql.init_app(app)
+mail = Mail(app)
+
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -41,31 +52,29 @@ def search():
 @app.route('/results', methods=['GET','POST'])
 @login_check(session)
 def results():
+
+    alert = "alert-danger"
     if not request.form.get('address'):
         flash("Invalid addres")
-        alert = "alert-danger"
-        
         return 'search.html', {'alert': alert}
     
-    msg = ""
     address = request.form.get('address').strip()
     coords = extract_lat_long_via_address(address)
-    
     if coords[0] is not None or coords[1] is not None:
         area = calculate_distance(coords)
-        
         if area:
             results = get_adverts_by_location(area)
-            
-            if not results:
-                msg = "Sorry. No result was found within 10 km from the given address."
+            if results:
+                return 'results.html', {'results': results}
+            else:
+                alert="alert-warning"
+                flash("Sorry. No results were found within 10 km from the given address.")
         else:
-            flash("Something went wrong. Try again later.")      
+            flash("Something went wrong. Try again later.")
     else:
         flash("Something went wrong. Try again later.")
-    
-    return 'results.html', {'results': results, 'msg': msg}
         
+    return 'search.html', {'alert': alert}
 
 
 @app.route('/results/item/<id>', methods=['GET','POST'])
@@ -76,7 +85,25 @@ def item_details(id):
         alert = "alert-danger"
         flash("Something went wrong. Try agin later.")    
         return 'search.html', {'alert': alert}
-    return 'item.html', {'result': result}
+    return 'item.html', {'result': result[0]}
+
+@app.route('/results/item/send', methods =['GET','POST'])
+@login_check(session)
+def contact():
+    msg = ('omg')
+    print(request.form)
+    if request.method == 'POST':
+        msg, is_msg_rendered = render_email_msg(request.form)
+        print(type(msg))
+        if is_msg_rendered:
+            mail.send(msg)
+            alert = "alert-info"
+            flash("Message send succcessfully!")
+        else:
+            alert="alert-danger"
+            flash(msg)
+            
+    return 'login.html', {'alert': alert}
 
 
 @app.route('/login', methods=['GET','POST'])
@@ -125,19 +152,19 @@ def login():
                 alert = "alert-info"
                 flash ("You are logged in successfully!")
                 
+                return render_template(
+                'main.html', 
+                alert=alert)
+                
             else:
                 flash('Sorry, username or/and password are invalid. Try again')
                 alert = "alert-danger"
                 
-            return render_template(
-                'login.html', 
-                alert=alert)
         else:
             flash("Please enter both username and password to sign in.")
         
     return render_template(
-        'login.html',
-        is_logged_in = True if session else False)
+        'login.html')
 
     
 @app.route('/sher', methods=['GET','POST'])
