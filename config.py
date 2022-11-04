@@ -1,4 +1,4 @@
 HOST="localhost"
 USER="root"
-PASSWORD="Karolina12"
+PASSWORD=""
 DB_NAME="Sherfood"
