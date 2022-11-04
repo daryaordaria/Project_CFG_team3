@@ -33,6 +33,14 @@
                     </ul>
                 </nav>
             </div>
+            {% for message in get_flashed_messages() %}
+            <div class="alert {{alert}} alert-dismissible fade show text-center" role="alert">
+                {{message}}
+                <button type="button" class="close" onclick="this.parentElement.style.display='none';">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
             <div class="search-wrap">
                 <div class="search">
                     <input type="text" class="searchTerm" placeholder="Enter your address...">
