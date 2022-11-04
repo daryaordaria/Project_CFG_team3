@@ -215,4 +215,13 @@ button.ghost {
   width: auto;
 }
 
+.checkbox-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+  color: #fff;
+  padding-top: 1%;
+}
 /*# sourceMappingURL=search.css.map */

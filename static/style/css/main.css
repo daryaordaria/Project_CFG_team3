@@ -271,16 +271,6 @@ footer {
   border-color: #FFFFFF;
 }
 
-.checkbox-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
-  flex-direction: row;
-  color: #fff;
-  padding-top: 1%;
-}
-
 .fa-map-marker {
   color: #fff;
   margin-left: 2%;
@@ -382,7 +372,7 @@ p .instruction-description {
   padding-bottom: 6%;
 }
 
-p1 .instruction-description {
+p .instruction-description {
   text-align: center;
 }
 
