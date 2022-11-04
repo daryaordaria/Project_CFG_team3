@@ -31,9 +31,11 @@ app.config["MAIL_PORT"] = 465
 app.config["MAIL_USE_SSL"] = True
 app.config["MAIL_USERNAME"] = EMAIL_USER
 app.config["MAIL_PASSWORD"] = EMAIL_PASSWORD
+
 mysql = MySQL()
+mail = Mail()
 mysql.init_app(app)
-mail = Mail(app)
+mail.init_app(app)
 
 
 
