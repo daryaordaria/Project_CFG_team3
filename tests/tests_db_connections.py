@@ -16,10 +16,10 @@ class TestDBConnections(unittest.TestCase):
         self.assertTrue(is_added)
        
     def test_get_advert_by_location1(self):
-        area = {"lat_min": 50.0, 
-                "lat_max": 55.0,
-                "lon_min": 1.0, 
-                "lon_max": 5.0}
+        area = {"lat_min": 51.0, 
+                "lat_max": 54.0,
+                "lon_min": -3.0, 
+                "lon_max": -1.0}
         results = get_adverts_by_location(area)
         result = results[0]
 
