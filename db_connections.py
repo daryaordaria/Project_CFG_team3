@@ -63,7 +63,7 @@ def _get_adverts(*args):
         if result_dict["expiration_date"] >= date.today():
             adverts.append(result_dict) 
         else:
-            _delete_advert(result_dict["annoucement_id"], arg.db_cursor)
+            _delete_advert(result_dict["annoucementID"], arg.db_cursor)
             
     return adverts
 
@@ -130,6 +130,7 @@ def add_advertisment(*args):
     except:
         return False
 
+
 @db_connection
 def get_email_address(*args):
     try:
@@ -152,3 +153,4 @@ def get_email_address(*args):
         return False
 
     return email_address[0]
+
