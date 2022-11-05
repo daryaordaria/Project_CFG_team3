@@ -26,3 +26,10 @@ CREATE TABLE users (
   description VARCHAR (500) NOT NULL,
   INDEX coords (latitude, longitude));
   
+
+-- test records:
+INSERT INTO annoucements
+VALUES (1,1, "Manchester", 53.480, 2.2426,"Available at 17:00, pick up from store Melcia", "2029-11-19", 1,0,0,0,0,0, "Vegan Wine", "Pinot noir from France");
+
+INSERT INTO users
+VALUES (1, 'test_user','password', 'email@email.com');
