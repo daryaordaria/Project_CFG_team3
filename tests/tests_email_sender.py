@@ -3,7 +3,10 @@ import unittest
 from email_sender import render_email_msg
 from config import EMAIL_USER
 
-class TestDBConnections(unittest.TestCase):
+# tests require existance of Sherfood DB and inserting test data into tables (db.sql) 
+# prior to running the tests !
+
+class TestEmail(unittest.TestCase):
     def test_render_email_message(self):
         contact_form = {'name': 'random_name',
                         'email': 'someemail@someemail.com',
