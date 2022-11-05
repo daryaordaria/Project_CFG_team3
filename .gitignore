@@ -6,3 +6,5 @@ cfgdegree/
 *.env
 
 config.py
+.vscode
+'idea
