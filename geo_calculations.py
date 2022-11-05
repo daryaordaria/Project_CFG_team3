@@ -1,7 +1,6 @@
 from haversine import inverse_haversine, Direction
 import requests
-
-GOOGLE_API_KEY = 'AIzaSyApyx4KbXuO-hBRceBu3LugFm-rYdAlvPQ'
+from config import GOOGLE_API_KEY
 
 def extract_lat_long_via_address(address):
     lat = lon = None
