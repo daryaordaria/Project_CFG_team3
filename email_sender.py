@@ -6,7 +6,6 @@ from config import EMAIL_USER
 
 
 def render_email_msg(contact_form):
-    print(EMAIL_USER)
     name = contact_form['name']
     email_address = contact_form['email'].strip()
     message = contact_form['message']
