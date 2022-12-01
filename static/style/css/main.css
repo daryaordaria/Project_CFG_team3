@@ -1,0 +1,389 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #fff;
+  font-family: "Roboto", sans-serif;
+  color: #545454;
+}
+
+h1 {
+  text-align: center;
+  color: #3B3A3A;
+  font-weight: bold;
+  margin: 0;
+}
+
+h2 {
+  text-align: center;
+  color: #3B3A3A;
+  padding: 3% 0 3% 0;
+}
+
+p {
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+
+.site-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex;
+  align-content: center;
+  align-self: center;
+}
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  padding: 2% 0 2% 0;
+  bottom: 0;
+}
+
+.r-link[href] {
+  color: var(--rLinkColor) !important;
+  text-decoration: var(--rLinkTextDecoration, none) !important;
+}
+
+.r-list {
+  padding-left: var(--rListPaddingLeft, 0) !important;
+  margin-top: var(--rListMarginTop, 0) !important;
+  margin-bottom: var(--rListMarginBottom, 0) !important;
+  list-style: var(--rListListStyle, none) !important;
+}
+
+.menu {
+  --rLinkColor: var(--menuLinkColor, currentColor);
+  background-color: #fff;
+}
+
+.menu-link {
+  display: var(--menuLinkDisplay, block);
+  padding: var(--menuLinkPadding, 1.5rem 2.5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.menu:hover .menu-link:not(:hover) {
+  --rLinkColor: var(--menuLinkColorUnactive, rgba(22, 22, 22, .35));
+}
+
+.menu-list {
+  display: flex;
+}
+
+/* TEXT UNDERLINED */
+.text-underlined {
+  position: relative;
+  overflow: hidden;
+  will-change: color;
+  transition: color 0.25s ease-out;
+}
+
+.text-underlined::before,
+.text-underlined::after {
+  content: "";
+  width: 0;
+  height: 3px;
+  background-color: var(--textUnderlinedLineColor, currentColor);
+  will-change: width;
+  transition: width 0.1s ease-out;
+  position: absolute;
+  bottom: 0;
+}
+
+.text-underlined::before {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.text-underlined::after {
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.text-underlined:hover::before,
+.text-underlined:hover::after {
+  width: 100%;
+  transition-duration: 0.2s;
+}
+
+.menu-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+}
+
+.menu-wrap {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
+  opacity: 1;
+}
+
+.header-wrap {
+  padding: 6% 0 6% 0;
+  background-color: #51BCA1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  flex-grow: 2;
+}
+
+.values-wrap {
+  padding: 6% 0 6% 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  flex-grow: 2;
+}
+
+.food-img-wrap {
+  padding: 3% 0 3% 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.instruction-wrap {
+  padding: 6% 0 10% 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  flex-grow: 3;
+}
+
+.register-wrap {
+  padding: 6% 0 6% 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 0;
+  background-color: #51BCA1;
+}
+
+.logo-wrap {
+  flex-shrink: 0;
+  flex-grow: 3;
+}
+
+.search {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  padding: 2% 0 2% 0;
+}
+
+.register {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
+  padding: 2% 0 2% 0;
+}
+
+.search-input {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+  padding: 12px;
+}
+
+.searchTerm {
+  height: 45px;
+  width: 300px;
+  border: 1px solid #fff;
+  border-right: none;
+  padding: 5px;
+  border-radius: 5px 0 0 5px;
+  letter-spacing: 1px;
+  outline: none;
+  color: #9DBFAF;
+  flex-grow: 7;
+}
+.searchTerm:focus {
+  color: #545454;
+}
+
+.button-wrap {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding-top: 2%;
+}
+
+.submit-button {
+  border-radius: 5px;
+  border: 1px solid #fff;
+  background-color: #51BCA1;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  align-self: center;
+}
+
+.submit-button:active {
+  transform: scale(0.95);
+}
+
+.submit-button:focus {
+  outline: none;
+}
+
+.submit-button.ghost {
+  background-color: transparent;
+  border-color: #FFFFFF;
+}
+
+.fa-map-marker {
+  color: #fff;
+  margin-left: 2%;
+  padding-top: 1%;
+}
+
+.motto {
+  align-self: center;
+  text-align: center;
+  padding: 1% 0 1% 0;
+  color: #fff;
+  line-height: 1.8;
+}
+
+.values-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+  align-items: center;
+  margin-left: -10%;
+  margin-right: -10%;
+}
+
+.value {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  align-self: center;
+}
+
+.value-description {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  align-content: space-between;
+  max-width: 400px;
+  padding: 0 10% 0 10%;
+}
+
+.photo {
+  max-width: 85%;
+  height: auto;
+  align-self: center;
+}
+
+p .instruction-description {
+  text-align: center;
+}
+
+.register-title {
+  align-self: center;
+}
+
+.register-txt {
+  padding-top: 2%;
+}
+
+.phone-instruction {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+  background-image: url(/static/images/phone.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  padding: 3% 0 3% 0;
+}
+
+.phone-instruction-left {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.phone-instruction-right {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+#instruction-img {
+  width: 100%;
+  height: auto;
+}
+
+#title {
+  padding-bottom: 6%;
+}
+
+p .instruction-description {
+  text-align: center;
+}
+
+.food-img {
+  max-width: 100%;
+  height: auto;
+  align-self: center;
+}
+
+.value-h2 {
+  padding: 3% 0 3% 0;
+}
+
+/*# sourceMappingURL=main.css.map */

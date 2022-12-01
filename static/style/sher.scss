@@ -1,0 +1,105 @@
+@use 'base';
+@use 'menu';
+
+.site-container {
+    min-height: 100vh;
+    min-width: 100%;
+}
+
+.flex-outer,
+.flex-inner {
+    list-style-type: none;
+    padding: 0;
+}
+
+.form {
+    @include base.flexbox-parent(column);
+    color: #fff;
+}
+
+.flex-outer {
+    width: 40%;
+    align-self: center;
+}
+
+.flex-outer li,
+.flex-inner {
+    @include base.flexbox-parent(row);
+}
+
+.form-wrap {
+    @include base.flexbox-parent(column);
+    background: base.$logo-green;
+    padding: 3% 0 2% 0;
+    width: 100%;
+}
+
+.flex-outer > li:not(:last-child) {
+    margin-bottom: 3%;
+}
+
+.flex-outer li label,
+.flex-outer li p {
+    padding: 3px;
+}
+
+.flex-outer > li > label,
+.flex-outer li p {
+    flex: 1 0 120px;
+    max-width: 220px;
+}
+
+.flex-outer > li > label + *,
+.flex-inner {
+    flex: 1 0 220px;
+}
+
+.flex-outer li input:not([type='checkbox']),
+.flex-outer li textarea {
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+}
+
+.flex-inner li {
+    align-self: center;
+    margin-right: 1%;
+}
+
+.button {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding-top: 2%;
+}
+
+button {
+    border-radius: 5px;
+    border: 1px solid #fff;
+    background-color: base.$logo-green;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    align-self: center;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:focus {
+    outline: none;
+}
+
+button.ghost {
+    background-color: transparent;
+    border-color: #FFFFFF;
+}
+
+.flash-msg {
+    color: base.$txt-grey;
+}

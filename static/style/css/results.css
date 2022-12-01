@@ -1,0 +1,236 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #fff;
+  font-family: "Roboto", sans-serif;
+  color: #545454;
+}
+
+h1 {
+  text-align: center;
+  color: #3B3A3A;
+  font-weight: bold;
+  margin: 0;
+}
+
+h2 {
+  text-align: center;
+  color: #3B3A3A;
+  padding: 3% 0 3% 0;
+}
+
+p {
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+
+.site-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex;
+  align-content: center;
+  align-self: center;
+}
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  padding: 2% 0 2% 0;
+}
+
+.r-link[href] {
+  color: var(--rLinkColor) !important;
+  text-decoration: var(--rLinkTextDecoration, none) !important;
+}
+
+.r-list {
+  padding-left: var(--rListPaddingLeft, 0) !important;
+  margin-top: var(--rListMarginTop, 0) !important;
+  margin-bottom: var(--rListMarginBottom, 0) !important;
+  list-style: var(--rListListStyle, none) !important;
+}
+
+.menu {
+  --rLinkColor: var(--menuLinkColor, currentColor);
+  background-color: #fff;
+}
+
+.menu-link {
+  display: var(--menuLinkDisplay, block);
+  padding: var(--menuLinkPadding, 1.5rem 2.5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.menu:hover .menu-link:not(:hover) {
+  --rLinkColor: var(--menuLinkColorUnactive, rgba(22, 22, 22, .35));
+}
+
+.menu-list {
+  display: flex;
+}
+
+/* TEXT UNDERLINED */
+.text-underlined {
+  position: relative;
+  overflow: hidden;
+  will-change: color;
+  transition: color 0.25s ease-out;
+}
+
+.text-underlined::before,
+.text-underlined::after {
+  content: "";
+  width: 0;
+  height: 3px;
+  background-color: var(--textUnderlinedLineColor, currentColor);
+  will-change: width;
+  transition: width 0.1s ease-out;
+  position: absolute;
+  bottom: 0;
+}
+
+.text-underlined::before {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.text-underlined::after {
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.text-underlined:hover::before,
+.text-underlined:hover::after {
+  width: 100%;
+  transition-duration: 0.2s;
+}
+
+.menu-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+}
+
+.menu-wrap {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
+  opacity: 1;
+}
+
+.site-container {
+  min-height: 100vh;
+}
+
+.search-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  background: #51BCA1;
+}
+
+.search {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
+  padding: 2% 0 2% 0;
+  width: 350px;
+}
+
+.searchTerm {
+  height: 35px;
+  border: 1px solid #545454;
+  border-right: none;
+  padding: 5px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+  flex-grow: 7;
+}
+.searchTerm:focus {
+  color: #545454;
+}
+
+.searchButton {
+  height: 35px;
+  border: 1px solid #545454;
+  background: #545454;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+  flex-grow: 2;
+}
+
+.results-wrap {
+  padding-top: 6%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.all-items {
+  padding-top: 4%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+  max-width: 1000px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item-wrap {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  justify-content: left;
+  align-content: stretch;
+  align-items: stretch;
+  line-height: 1.6;
+  height: 250px;
+  width: 260px;
+  margin: 3%;
+  text-decoration: none;
+  color: #545454;
+  cursor: pointer;
+}
+
+
+
+#item {
+  padding: 1% 0 2% 0;
+  text-decoration: none;
+}
+
+#item p {
+  font-size: smaller;
+}
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+/*# sourceMappingURL=results.css.map */

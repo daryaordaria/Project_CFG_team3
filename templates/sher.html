@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sherfood</title>
+        <script src="/jquery-3.2.1.min.js"></script>
+        <script src="/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" 
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" 
+            rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/css/sher.css') }}"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <script type="text/javascript" src="{{ url_for('static', filename='script/sher.js') }}"></script>
+    </head>
+    <body>
+        <div class="site-container">
+            <div class="menu-wrap" id="navbar">
+                <nav class="menu">
+                    <ul class="menu-list r-list">
+                        <li class="menu-group"><a href="/" class="menu-link r-link text-underlined">Home</a></li>
+                        <li class="menu-group"><a href="/search" class="menu-link r-link text-underlined">Get some food</a></li>
+                        <li class="menu-group"><a href="/sher" class="menu-link r-link text-underlined">Sher your food</a></li>
+                        {% if login %}
+                        <li class="menu-group"><a href="/logout" class="menu-link r-link text-underlined">Log out</a></li>
+                        {% else %}
+                        <li class="menu-group"><a href="/login" class="menu-link r-link text-underlined">Log in</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+            {% for message in get_flashed_messages() %}
+                <div class="alert {{alert}} alert-dismissible fade show text-center" role="alert">
+                    {{message}}
+                    <button type="button" class="close" onclick="this.parentElement.style.display='none';">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+            <form class="form" action="/sher/add" method="POST" class="search" name="form">
+                <div class="form-wrap">
+                    <ul class="flex-outer">
+                        <li>
+                            <label for="product-name">Product name</label>
+                            <input type="text" name="product_name" id="product-name" maxlength="30" 
+                                placeholder="Enter the product name here">
+                        </li>
+                        <li>
+                            <label for="exp-date">Expiration date</label>
+                            <input id="datefield" name="expiration_date" type='date' min='2022-10-25' max='2025-12-31'>
+                        </li>
+                        <li>
+                            <label for="address">Address</label>
+                            <input type="text" name="address" id="address" maxlength="60" 
+                                placeholder="Enter pick up address (more or less exact)">
+                        </li>
+                        <li>
+                            <label for="pick-up">Pick up details</label>
+                            <textarea rows="2" name="pick_up_details" id="pick-up" maxlength="150" 
+                                placeholder="Enter some pick up details"></textarea>
+                        </li>
+                        <li>
+                            <label for="message">Description</label>
+                            <textarea rows="4" name="description" id="description" maxlength="300" 
+                                placeholder="Enter product description"></textarea>
+                        </li>
+                        <li>
+                            <p>Tags</p>
+                            <ul class="flex-inner">
+                                <li>
+                                    <input type="checkbox" id="kosher" name="kosher" value="1">
+                                    <label for="kosher">kosher</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="halal" name="halal" value=1>
+                                    <label for="halal">halal</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="lactose-free" name="lactosefree" value=1>
+                                    <label for="lactose-free">lactose-free</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="gluten-free" name="glutenfree" value=1>
+                                    <label for="gluten-free">gluten-free</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="wegetarian" name="vegetarian" value=1>
+                                    <label for="wegetarian">vegetarian</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="wegan" name="vegan" value=1>
+                                    <label for="wegan">vegan</label>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="button-wrap">
+                    <button class="submit-button" type="submit">Submit</button>
+                </div>
+            </form>
+            <footer>
+                <img src="../static/images/footer.png" class="footer-logo" alt="Website logo">
+                <p1 class="copyright">Copyright(c) 2022 by Group3</p1>
+            </footer>
+        </div>
+    </body>
+</html>
+
